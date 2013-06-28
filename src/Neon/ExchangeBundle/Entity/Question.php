@@ -34,14 +34,14 @@ class Question
     protected $question;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    protected $upvotes;
+    protected $upvotes = 0;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    protected $downvotes;
+    protected $downvotes = 0;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="questions")
