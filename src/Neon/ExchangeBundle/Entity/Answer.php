@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\Table(name="answers")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Answer
 {
@@ -48,6 +49,33 @@ class Answer
      * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
      */
     protected $question;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $modified;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedValue()
+    {
+        $this->created = new \DateTime();
+        $this->modified = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setModifiedValue()
+    {
+        $this->modified = new \DateTime();
+    }
 
     /**
      * Get id

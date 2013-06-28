@@ -13,6 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="questions")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Question
 {
@@ -53,6 +54,33 @@ class Question
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
      */
     protected $answers;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $created;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $modified;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedValue()
+    {
+        $this->created = new \DateTime();
+        $this->modified = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setModifiedValue()
+    {
+        $this->modified = new \DateTime();
+    }
 
     public function __construct() {
         $this->answers = new ArrayCollection();
