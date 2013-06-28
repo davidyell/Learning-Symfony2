@@ -1,0 +1,2 @@
+_neon_exchange:
+  resource: "@NeonExchangeBundle/Resources/config/routing.yml"

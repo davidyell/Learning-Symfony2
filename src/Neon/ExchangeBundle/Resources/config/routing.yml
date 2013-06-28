@@ -1,0 +1,4 @@
+questions:
+  path: /
+  defaults: { _controller: NeonExchangeBundle:Questions:index }
+
