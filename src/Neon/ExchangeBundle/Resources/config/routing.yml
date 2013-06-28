@@ -2,3 +2,7 @@ questions:
   path: /
   defaults: { _controller: NeonExchangeBundle:Questions:index }
 
+neon_exchange:
+  resource: "@NeonExchangeBundle/Controller/"
+  type: annotation
+  prefix: /

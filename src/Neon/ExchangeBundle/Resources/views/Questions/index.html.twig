@@ -1,5 +1,18 @@
 {% extends 'NeonExchangeBundle::layout.html.twig' %}
 
 {% block content %}
-Questions index
+    <h2>Latest questions</h2>
+    {% if questions is empty %}
+        <p>No questions found. Create one now!</p>
+    {% else %}
+        {% for question in questions %}
+            <div class="question">
+                <span class="votes label">{{ question.upvotes + question.downvotes }}<br><small>votes</small></span>
+                <span class="answers label">{{ question.answers|length }}<br><small>answers</small></span>
+                <h3><a href="" title="{{ question.title }}">{{ question.title }}</a></h3>
+                <p class="user"><a href="">{{ question.user.name }}</a> CREATED</p>
+                <div class="clearfix"><!-- blank --></div>
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

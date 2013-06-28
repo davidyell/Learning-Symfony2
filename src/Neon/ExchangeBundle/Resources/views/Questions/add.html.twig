@@ -1,0 +1,13 @@
+{% extends 'NeonExchangeBundle::layout.html.twig' %}
+
+{% block content %}
+    <h2>Ask a question</h2>
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.question) }}
+        {{ form_row(form.user) }}
+
+        <input type="submit" value="Save" class="btn btn-success">
+    {{ form_end(form) }}
+{% endblock %}
