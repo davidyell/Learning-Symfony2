@@ -1,0 +1,46 @@
+{% extends 'NeonExchangeBundle::layout.html.twig' %}
+
+{% block content %}
+    <div id='view-question' class='well'>
+        <div class='votes'>
+            <span class='upvote'data-id='{{ question.id }}' data-type='question' data-vote='up'>&uarr;</span>
+            <span class='num'>{{ question.upvotes - question.downvotes }}</span>
+            <span class='downvote'data-id='{{ question.id }}' data-type='question' data-vote='down'>&darr;</span>
+        </div>
+        <div class='question-content'>
+            <h2>{{ question.title }}</h2>
+            <p>{{ question.question }}</p>
+            <p class="user"><a href="">{{ question.user.name }}</a> {{ question.created|time_ago_in_words }}</p>
+            <div class='clearfix'><!-- blank --></div>
+        </div>
+    </div>
+
+    <div id='answers'>
+        {% for answer in question.answers %}
+            <div class='view-answer'>
+                <div class='votes'>
+                    <span class='upvote' data-id='{{ answer.id }}' data-type='answer' data-vote='up'>&uarr;</span>
+                    <span class='num'>{{ answer.upvotes - answer.downvotes }}</span>
+                    <span class='downvote' data-id='{{ answer.id }}' data-type='answer' data-vote='down'>&darr;</span>
+                </div>
+                <div class='answer-content'>
+                    <p>{{ answer.answer }}</p>
+                    <p class="user"><a href="">{{ answer.user.name }}</a> {{ answer.created|time_ago_in_words }}</p>
+                </div>
+            </div>
+            <div class='clearfix'><!-- blank --></div>
+        {% endfor %}
+
+        <div class='write-answer'>
+            <h3>Your answer</h3>
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
+                {{ form_row(form.answer) }}
+
+                <input type="hidden" name="question_id" value="{{ question.id }}">
+
+                <input type="submit" value="Save" class="btn btn-success">
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

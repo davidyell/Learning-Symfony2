@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Neon\ExchangeBundle\Form\Type\QuestionType;
+use Neon\ExchangeBundle\Form\Type\AnswerType;
 
 /**
  * Description of QuestionsController
@@ -58,6 +59,26 @@ class QuestionsController extends Controller {
         }
 
         return array(
+            'form' => $form->createView()
+        );
+    }
+
+    /**
+     * View a question and any answers
+     *
+     * @Route("/question/view/{id}", name="view_question")
+     * @Template()
+     *
+     * @param int $id
+     * @return array
+     */
+    public function viewAction($id) {
+        $question = $this->getDoctrine()->getManager()->find('NeonExchangeBundle:Question' ,$id);
+
+        $form = $this->createForm(new AnswerType());
+
+        return array(
+            'question' => $question,
             'form' => $form->createView()
         );
     }

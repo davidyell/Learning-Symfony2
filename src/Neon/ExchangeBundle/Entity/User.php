@@ -225,4 +225,14 @@ class User
     {
         return $this->answers;
     }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function getModified()
+    {
+        return $this->modified;
+    }
 }

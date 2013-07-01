@@ -6,15 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Description of QuestionType
+ * Description of AnswerType
  *
  * @author David Yell <neon1024@gmail.com>
  */
-class QuestionType extends AbstractType
+class AnswerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('title')
-            ->add('question')
+        $builder->add('answer')
             ->add('user', 'entity', array(
                 'class' => 'NeonExchangeBundle:User',
                 'property' => 'email'
@@ -22,12 +21,12 @@ class QuestionType extends AbstractType
     }
 
     public function getName() {
-        return 'add_question_form';
+        return 'add_answer_form';
     }
 
     public function setDefaultOptions(\Symfony\Component\OptionsResolver\OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Neon\ExchangeBundle\Entity\Question'
+            'data_class' => 'Neon\ExchangeBundle\Entity\Answer'
         ));
     }
 

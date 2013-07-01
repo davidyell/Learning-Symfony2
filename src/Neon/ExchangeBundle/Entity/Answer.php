@@ -201,4 +201,14 @@ class Answer
     {
         return $this->question;
     }
+
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function getModified()
+    {
+        return $this->modified;
+    }
 }
