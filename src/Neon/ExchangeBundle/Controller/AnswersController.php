@@ -32,15 +32,16 @@ class AnswersController extends Controller {
             ->getRepository('NeonExchangeBundle:Question')
             ->find($questionId);
 
-		var_dump($question->getId());exit;
-
 		$form = $this->createForm(new AnswerType());
 
         if ($request->isMethod('post')) {
             $form->submit($this->getRequest());
 
+			$answer = $form->getData();
+			$answer->setQuestion($question);
+
             $manager = $this->getDoctrine()->getManager();
-            $manager->persist($form->getData());
+            $manager->persist($answer);
             $manager->flush();
 
             $this->get('session')->getFlashBag()->add('notice', 'Answer saved');
