@@ -33,11 +33,10 @@
 
         <div class='write-answer'>
             <h3>Your answer</h3>
-            {{ form_start(form) }}
+            {{ form_start(form, { 'action': path('add_answer', {'questionId': question.id}) }) }}
                 {{ form_errors(form) }}
-                {{ form_row(form.answer) }}
-
-                <input type="hidden" name="question_id" value="{{ question.id }}">
+				{{ form_row(form.answer) }}
+				{{ form_row(form.user) }}
 
                 <input type="submit" value="Save" class="btn btn-success">
             {{ form_end(form) }}
