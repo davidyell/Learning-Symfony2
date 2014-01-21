@@ -31,7 +31,7 @@ class QuestionsController extends Controller {
     public function indexAction() {
         $questions = $this->getDoctrine()
             ->getRepository('NeonExchangeBundle:Question')
-            ->findAll();
+            ->findAllByCreated();
 
         return array('questions' => $questions);
     }
