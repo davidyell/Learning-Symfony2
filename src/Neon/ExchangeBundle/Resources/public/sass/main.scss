@@ -41,6 +41,9 @@ html {
         small {
             font-size: 0.4em;
         }
+		&.answers.has-answers {
+			color: #b0ea64;
+		}
     }
     h3 {
         float: left;
