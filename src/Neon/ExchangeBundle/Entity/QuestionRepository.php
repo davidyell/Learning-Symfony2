@@ -11,14 +11,16 @@ use Doctrine\ORM\EntityRepository;
 class QuestionRepository extends EntityRepository {
 
 	/**
-	 * Get a list of all the questions by date created
+	 * Paginate a set of questions ordered by modified
 	 *
-	 * @return
+	 * @return Query
 	 */
-	public function findAllByCreated() {
-		return $this->getEntityManager()
-			->createQuery('SELECT p FROM NeonExchangeBundle:Question p ORDER BY p.created DESC')
-			->getResult();
+	public function paginateByModified() {
+		$db = $this->createQueryBuilder('q');
+		$query = $db->select('q')
+				->orderBy('q.modified', 'DESC')
+				->getQuery();
+		return $query;
 	}
-
+	
 }

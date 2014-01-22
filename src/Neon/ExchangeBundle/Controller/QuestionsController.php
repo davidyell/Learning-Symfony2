@@ -29,11 +29,15 @@ class QuestionsController extends Controller {
      * @return array
      */
     public function indexAction() {
-        $questions = $this->getDoctrine()
-            ->getRepository('NeonExchangeBundle:Question')
-            ->findAllByCreated();
+		$query = $this->getDoctrine()->getRepository('NeonExchangeBundle:Question')->paginateByModified();
+		$paginator = $this->get('knp_paginator');
+		$pagination = $paginator->paginate(
+			$query,
+			$this->get('request')->query->get('page', 1),
+			5
+		);
 
-        return array('questions' => $questions);
+        return array('pagination' => $pagination);
     }
 
     /**
