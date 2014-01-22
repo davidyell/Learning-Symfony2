@@ -77,7 +77,9 @@ class QuestionsController extends Controller {
      * @return array
      */
     public function viewAction($id) {
-        $question = $this->getDoctrine()->getManager()->find('NeonExchangeBundle:Question' ,$id);
+		$question = $this->getDoctrine()
+			->getRepository('NeonExchangeBundle:Question')
+			->findQuestionWithAnswersOrderedByVotes($id);
 
         $form = $this->createForm(new AnswerType());
 

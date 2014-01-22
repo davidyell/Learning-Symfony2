@@ -17,10 +17,26 @@ class QuestionRepository extends EntityRepository {
 	 */
 	public function paginateByModified() {
 		$db = $this->createQueryBuilder('q');
-		$query = $db->select('q')
-				->orderBy('q.modified', 'DESC')
-				->getQuery();
+		$query = $db->orderBy('q.modified', 'DESC')->getQuery();
 		return $query;
+	}
+
+	/**
+	 * Find question with answers ordered by upvotes
+	 *
+	 * @param int $id
+	 * @return Question
+	 */
+	public function findQuestionWithAnswersOrderedByVotes($id) {
+		$db = $this->createQueryBuilder('q');
+		$question = $db->select('q, a')
+			->leftJoin('q.answers', 'a')
+			->where('q.id = :id')
+			->setParameter('id', $id)
+			->orderBy('a.upvotes', 'DESC')
+			->getQuery();
+
+		return $question->getSingleResult();
 	}
 	
 }
