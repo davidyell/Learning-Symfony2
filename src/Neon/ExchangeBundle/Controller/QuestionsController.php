@@ -83,4 +83,31 @@ class QuestionsController extends Controller {
         );
     }
 
+	/**
+	 * Added a vote to a Question
+	 *
+	 * @Route("/question/vote/{id}/{dir}", name="vote_question")
+	 *
+	 * @param int $id
+	 * @param string $dir
+	 * @return int
+	 */
+	public function voteAction($id, $dir) {
+		$em = $this->getDoctrine()->getManager();
+		$question = $em->getRepository('NeonExchangeBundle:Question')->find($id);
+
+		$upvotes = $question->getUpvotes();
+		$downvotes = $question->getDownvotes();
+
+		if ($dir === 'up') {
+			$question->setUpvotes(++$upvotes);
+		} else {
+			$question->setDownvotes(++$downvotes);
+		}
+
+		$em->flush();
+
+		return new Response($question->getUpvotes() - $question->getDownvotes());
+	}
+
 }
