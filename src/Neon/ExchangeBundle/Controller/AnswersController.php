@@ -60,20 +60,20 @@ class AnswersController extends Controller {
 	 */
 	public function voteAction($id, $dir) {
 		$em = $this->getDoctrine()->getManager();
-		$question = $em->getRepository('NeonExchangeBundle:Answer')->find($id);
+		$answer = $em->getRepository('NeonExchangeBundle:Answer')->find($id);
 
-		$upvotes = $question->getUpvotes();
-		$downvotes = $question->getDownvotes();
+		$upvotes = $answer->getUpvotes();
+		$downvotes = $answer->getDownvotes();
 
 		if ($dir === 'up') {
-			$question->setUpvotes(++$upvotes);
+			$answer->setUpvotes(++$upvotes);
 		} else {
-			$question->setDownvotes(++$downvotes);
+			$answer->setDownvotes(++$downvotes);
 		}
 
 		$em->flush();
 
-		return new Response($question->getUpvotes() - $question->getDownvotes());
+		return new Response($answer->getUpvotes() - $answer->getDownvotes());
 	}
 
 }

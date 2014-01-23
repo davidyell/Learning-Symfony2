@@ -55,7 +55,12 @@ class Question
      */
     protected $answers;
 
-    /**
+	/**
+	 * @ORM\Column(type="integer")
+	 */
+	protected $accepted_answer_id;
+
+	/**
      * @ORM\Column(type="datetime", nullable=true)
      */
     protected $created;
@@ -243,6 +248,26 @@ class Question
     {
         return $this->answers;
     }
+
+	/**
+	 * Set an answer as accepted on this question
+	 * 
+	 * @param int $id
+	 * @return \Neon\ExchangeBundle\Entity\Question
+	 */
+	public function setAcceptedAnswer($id) {
+		$this->accepted_answer_id = $id;
+		return $this;
+	}
+
+	/**
+	 * Return the id of the question
+	 * 
+	 * @return int
+	 */
+	public function getAcceptedAnswer() {
+		return $this->accepted_answer_id;
+	}
 
     public function getCreated()
     {

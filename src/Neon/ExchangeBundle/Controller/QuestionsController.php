@@ -4,6 +4,7 @@ namespace Neon\ExchangeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -114,6 +115,29 @@ class QuestionsController extends Controller {
 		$em->flush();
 
 		return new Response($question->getUpvotes() - $question->getDownvotes());
+	}
+
+	/**
+	 * Mark a question as having a resolved answer
+	 *
+	 * @Route("/question/accept_answer/{questionId}/{answerId}", name="accept_answer")
+	 *
+	 * @param int $questionId
+	 * @param int $answerId
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function acceptAnswerAction($questionId, $answerId) {
+		$em = $this->getDoctrine()->getManager();
+		$question = $em->getRepository('NeonExchangeBundle:Question')->find($questionId);
+
+		if ($question->getAcceptedAnswer() !== 0) {
+			return new JsonResponse(array('message' => 'You cannot accept this answer, an anwer has already been accepted'));
+		} else {
+			$question->setAcceptedAnswer($answerId);
+			$em->flush();
+		}
+
+		return new JsonResponse(array('message' => 'Answer has been accepted'));
 	}
 
 }

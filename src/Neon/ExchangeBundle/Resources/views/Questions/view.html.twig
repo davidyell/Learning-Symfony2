@@ -19,9 +19,10 @@
         {% for answer in question.answers %}
             <div class='view-answer'>
                 <div class='votes'>
-                    <span class='upvote' data-id='{{ answer.id }}' data-type='answer' data-vote='up'>&uarr;</span>
+                    <span class='vote upvote' title='Upvote this answer' data-id='{{ answer.id }}' data-type='answer' data-vote='up'><i class='icon-arrow-up'></i></span>
                     <span class='num'>{{ answer.upvotes - answer.downvotes }}</span>
-                    <span class='downvote' data-id='{{ answer.id }}' data-type='answer' data-vote='down'>&darr;</span>
+                    <span class='vote downvote' title='Downvote this answer' data-id='{{ answer.id }}' data-type='answer' data-vote='down'><i class='icon-arrow-down'></i></span>
+					<span class='accept label' title='Accept this answer' data-type='accept' data-answer-id='{{ answer.id }}' data-question-id='{{ question.id }}'><i class='icon-ok'></i></span>
                 </div>
                 <div class='answer-content'>
                     <p>{{ answer.answer }}</p>
