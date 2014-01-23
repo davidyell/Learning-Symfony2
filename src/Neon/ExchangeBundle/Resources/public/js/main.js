@@ -4,9 +4,9 @@ $(function() {
         var url, element = $(this);
 
         if ($(this).data('type') == 'question') {
-            url = '/questions/vote/';
+            url = '/app_dev.php/question/vote/';
         } else if ($(this).data('type') == 'answer') {
-            url = '/answers/vote/';
+            url = '/app_dev.php/answer/vote/';
         }
 
         $.ajax({

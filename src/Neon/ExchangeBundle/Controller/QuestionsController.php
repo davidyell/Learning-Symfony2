@@ -29,11 +29,15 @@ class QuestionsController extends Controller {
      * @return array
      */
     public function indexAction() {
-        $questions = $this->getDoctrine()
-            ->getRepository('NeonExchangeBundle:Question')
-            ->findAll();
+		$query = $this->getDoctrine()->getRepository('NeonExchangeBundle:Question')->paginateByModified();
+		$paginator = $this->get('knp_paginator');
+		$pagination = $paginator->paginate(
+			$query,
+			$this->get('request')->query->get('page', 1),
+			5
+		);
 
-        return array('questions' => $questions);
+        return array('pagination' => $pagination);
     }
 
     /**
@@ -73,7 +77,9 @@ class QuestionsController extends Controller {
      * @return array
      */
     public function viewAction($id) {
-        $question = $this->getDoctrine()->getManager()->find('NeonExchangeBundle:Question' ,$id);
+		$question = $this->getDoctrine()
+			->getRepository('NeonExchangeBundle:Question')
+			->findQuestionWithAnswersOrderedByVotes($id);
 
         $form = $this->createForm(new AnswerType());
 
@@ -82,5 +88,32 @@ class QuestionsController extends Controller {
             'form' => $form->createView()
         );
     }
+
+	/**
+	 * Added a vote to a Question
+	 *
+	 * @Route("/question/vote/{id}/{dir}", name="vote_question")
+	 *
+	 * @param int $id
+	 * @param string $dir
+	 * @return int
+	 */
+	public function voteAction($id, $dir) {
+		$em = $this->getDoctrine()->getManager();
+		$question = $em->getRepository('NeonExchangeBundle:Question')->find($id);
+
+		$upvotes = $question->getUpvotes();
+		$downvotes = $question->getDownvotes();
+
+		if ($dir === 'up') {
+			$question->setUpvotes(++$upvotes);
+		} else {
+			$question->setDownvotes(++$downvotes);
+		}
+
+		$em->flush();
+
+		return new Response($question->getUpvotes() - $question->getDownvotes());
+	}
 
 }

@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Neon\ExchangeBundle\Entity\QuestionRepository")
  * @ORM\Table(name="questions")
  * @ORM\HasLifecycleCallbacks()
  */

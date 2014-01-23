@@ -2,17 +2,19 @@
 
 {% block content %}
     <h2>Latest questions</h2>
-    {% if questions is empty %}
+    {% if pagination is empty %}
         <p>No questions found. Create one now!</p>
     {% else %}
-        {% for question in questions %}
+        {% for question in pagination %}
             <div class="question">
-                <span class="votes label">{{ question.upvotes + question.downvotes }}<br><small>votes</small></span>
-                <span class="answers label">{{ question.answers|length }}<br><small>answers</small></span>
+                <span class="votes label">{{ question.upvotes - question.downvotes }}<br><small>votes</small></span>
+                <span class="answers label {% if question.answers|length > 0 %}has-answers{% endif %}">{{ question.answers|length }}<br><small>answers</small></span>
                 <h3><a href="{{ path('view_question', {'id': question.id}) }}" title="{{ question.title }}">{{ question.title }}</a></h3>
                 <p class="user"><a href="">{{ question.user.name }}</a> {{ question.created|time_ago_in_words }}</p>
                 <div class="clearfix"><!-- blank --></div>
             </div>
         {% endfor %}
+
+		{{ knp_pagination_render(pagination) }}
     {% endif %}
 {% endblock %}
