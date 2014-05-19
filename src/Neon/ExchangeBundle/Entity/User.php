@@ -3,6 +3,7 @@ namespace Neon\ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Description of User
@@ -15,7 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="users")
  * @ORM\HasLifecycleCallbacks()
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -235,4 +236,37 @@ class User
     {
         return $this->modified;
     }
+
+	
+	public function eraseCredentials() {
+		
+	}
+
+	public function getRoles() {
+		return array('ROLE_USER');
+	}
+
+	public function getSalt() {
+		
+	}
+
+	public function getUsername() {
+		return $this->email;
+	}
+
+	public function serialize() {
+		return serialize([
+			$this->id,
+			$this->email,
+			$this->password
+		]);
+	}
+
+	public function unserialize($serialized) {
+		list(
+			$this->id,
+			$this->email,
+			$this->password
+		) = unserialize($serialized);
+	}
 }
