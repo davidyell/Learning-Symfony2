@@ -1,2 +1,8 @@
 _neon_exchange:
   resource: "@NeonExchangeBundle/Resources/config/routing.yml"
+  
+login:
+  path: /login
+  defaults: { _controller: NeonExchangeBundle:Users:login }
+login_check:
+  path: /login_check
