@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Neon\ExchangeBundle\Entity\Answer;
@@ -22,6 +23,7 @@ class AnswersController extends Controller {
 	 * Add an answer to a question
 	 *
 	 * @Route("/answer/add/{questionId}", name="add_answer")
+	 * @Method({"GET", "POST"})
 	 * @Template()
 	 *
 	 * @return array
@@ -53,7 +55,7 @@ class AnswersController extends Controller {
 	 * Added a vote to an Answer
 	 *
 	 * @Route("/answer/vote/{id}/{dir}", name="vote_answer")
-	 *
+	 * @Method({"GET"})
 	 * @param int $id
 	 * @param string $dir
 	 * @return int
