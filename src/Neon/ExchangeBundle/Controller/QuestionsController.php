@@ -18,7 +18,6 @@ use Neon\ExchangeBundle\Form\Type\AnswerType;
  * @author David Yell <neon1024@gmail.com>
  *
  * @Route("/")
- * @Method({"GET"})
  */
 class QuestionsController extends Controller {
 
