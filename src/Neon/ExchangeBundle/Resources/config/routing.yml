@@ -6,4 +6,3 @@ neon_exchange:
   resource: "@NeonExchangeBundle/Controller/"
   type: annotation
   prefix: /
-  methods: [GET]

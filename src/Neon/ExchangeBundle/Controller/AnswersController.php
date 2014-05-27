@@ -23,7 +23,7 @@ class AnswersController extends Controller {
 	 * Add an answer to a question
 	 *
 	 * @Route("/answer/add/{questionId}", name="add_answer")
-	 * @Method({"GET", "POST"})
+	 * @Method({"GET","POST"})
 	 * @Template()
 	 *
 	 * @return array

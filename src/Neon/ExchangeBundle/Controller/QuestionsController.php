@@ -17,8 +17,6 @@ use Neon\ExchangeBundle\Form\Type\AnswerType;
  *
  * @author David Yell <neon1024@gmail.com>
  *
- * @Route("/")
- * @Method({"GET"})
  */
 class QuestionsController extends Controller {
 
@@ -47,7 +45,7 @@ class QuestionsController extends Controller {
      * Add a new question
      *
      * @Route("/questions/add", name="add_question")
-	 * @Method({"GET", "POST"})
+	 * @Method({"GET","POST"})
      * @Template()
      *
      * @return array
