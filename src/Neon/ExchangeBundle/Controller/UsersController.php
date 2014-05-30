@@ -28,12 +28,17 @@ class UsersController extends Controller {
 	public function loginAction(Request $request) {
         $session = $request->getSession();
 		
-		if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-			$error = $request->attributes->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-		} else {
-			$error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-			$session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
-		}
+        // get the login error if there is one
+        if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(
+                SecurityContextInterface::AUTHENTICATION_ERROR
+            );
+        } elseif (null !== $session && $session->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
+            $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
+        } else {
+            $error = '';
+        }
 		
 		$form = $this->createForm(new LoginType());
 		

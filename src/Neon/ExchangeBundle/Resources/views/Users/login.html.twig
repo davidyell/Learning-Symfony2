@@ -3,6 +3,11 @@
 {% block content %}
     <h2>Login</h2>
     {{ form_start(form, {'action': path('login_check')}) }}
+		
+		{% if error|length > 0 %}
+			{{ error.message }}
+		{% endif %}
+	
         {{ form_errors(form) }}
         {{ form_row(form.email) }}
         {{ form_row(form.password, {'type': 'password'}) }}
