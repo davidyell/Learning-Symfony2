@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: @NeonExchangeBundle/Resources/config/services.yml }
 
 framework:
     #esi:             ~
@@ -17,7 +18,9 @@ framework:
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_proxies: ~
-    session:         ~
+    session: 
+      name: 'neon-exchange'
+      save_path: null
     fragments:       ~
 
 # Twig Configuration
@@ -63,13 +66,6 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
-
-services:
-    salavert.twig.time_ago:
-        class: Salavert\Twig\Extension\TimeAgoExtension
-        arguments: [@translator]
-        tags:
-        - { name: twig.extension }
 
 # KNP Paginator
 knp_paginator:

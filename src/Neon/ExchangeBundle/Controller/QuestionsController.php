@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Neon\ExchangeBundle\Form\Type\QuestionType;
@@ -16,7 +17,6 @@ use Neon\ExchangeBundle\Form\Type\AnswerType;
  *
  * @author David Yell <neon1024@gmail.com>
  *
- * @Route("/")
  */
 class QuestionsController extends Controller {
 
@@ -24,6 +24,7 @@ class QuestionsController extends Controller {
      * List the questions
      *
      * @Route("/", name="latest_questions")
+	 * @Method({"GET"})
      * @Template()
      *
      * @return array
@@ -44,6 +45,7 @@ class QuestionsController extends Controller {
      * Add a new question
      *
      * @Route("/questions/add", name="add_question")
+	 * @Method({"GET","POST"})
      * @Template()
      *
      * @return array
@@ -71,6 +73,7 @@ class QuestionsController extends Controller {
      * View a question and any answers
      *
      * @Route("/question/view/{id}", name="view_question")
+	 * @Method({"GET"})
      * @Template()
      *
      * @param int $id
@@ -93,6 +96,7 @@ class QuestionsController extends Controller {
 	 * Added a vote to a Question
 	 *
 	 * @Route("/question/vote/{id}/{dir}", name="vote_question")
+	 * @Method({"GET"})
 	 *
 	 * @param int $id
 	 * @param string $dir
