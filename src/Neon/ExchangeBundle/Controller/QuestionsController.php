@@ -11,7 +11,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Neon\ExchangeBundle\Form\Type\QuestionType;
 use Neon\ExchangeBundle\Form\Type\AnswerType;
-use Neon\ExchangeBundle\Form\Type\TagType;
 
 /**
  * Description of QuestionsController
