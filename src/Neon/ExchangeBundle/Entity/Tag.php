@@ -40,7 +40,7 @@ class Tag
 	protected $modified;
 
 	/**
-	 * @ORM\ManyToMany(targetEntity="Question", inversedBy="tags")
+	 * @ORM\ManyToMany(targetEntity="Question", mappedBy="tags")
 	 * @ORM\JoinTable(name="questions_tags")
 	 */
 	private $questions;
