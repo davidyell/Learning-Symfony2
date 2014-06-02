@@ -55,6 +55,8 @@ class QuestionsController extends Controller {
 
         if ($request->isMethod('post')) {
             $form->bind($this->getRequest());
+			
+			$form->getData()->setUser($this->getUser());
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($form->getData());

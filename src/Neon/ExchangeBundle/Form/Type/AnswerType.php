@@ -13,11 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 class AnswerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('answer')
-            ->add('user', 'entity', array(
-                'class' => 'NeonExchangeBundle:User',
-                'property' => 'email'
-            ));
+        $builder->add('answer');
     }
 
     public function getName() {

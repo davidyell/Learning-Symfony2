@@ -40,6 +40,7 @@ class AnswersController extends Controller {
 				->find($questionId);
 
 			$answer->setQuestion($question);
+			$answer->setUser($this->getUser());
 
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($answer);

@@ -14,11 +14,7 @@ class QuestionType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('title')
-            ->add('question')
-            ->add('user', 'entity', array(
-                'class' => 'NeonExchangeBundle:User',
-                'property' => 'email'
-            ));
+            ->add('question');
     }
 
     public function getName() {
