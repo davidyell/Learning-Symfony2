@@ -54,6 +54,12 @@ class Question
      * @ORM\OneToMany(targetEntity="Answer", mappedBy="question")
      */
     protected $answers;
+	
+	/**
+	 * @ORM\ManyToMany(targetEntity="Tag", inversedBy="questions")
+	 * @ORM\JoinTable(name="questions_tags")
+	 */
+	protected $tags;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -65,6 +71,12 @@ class Question
      */
     protected $modified;
 
+
+    public function __construct() {
+        $this->answers = new ArrayCollection();
+        $this->tags = new ArrayCollection();
+    }
+	
     /**
      * @ORM\PrePersist
      */
@@ -80,10 +92,6 @@ class Question
     public function setModifiedValue()
     {
         $this->modified = new \DateTime();
-    }
-
-    public function __construct() {
-        $this->answers = new ArrayCollection();
     }
 
     /**
