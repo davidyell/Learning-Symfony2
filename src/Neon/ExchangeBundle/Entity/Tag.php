@@ -2,6 +2,7 @@
 namespace Neon\ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Tag

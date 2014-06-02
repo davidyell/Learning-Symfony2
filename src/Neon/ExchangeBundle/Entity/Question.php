@@ -56,7 +56,7 @@ class Question
     protected $answers;
 	
 	/**
-	 * @ORM\ManyToMany(targetEntity="Tag", inversedBy="questions")
+	 * @ORM\ManyToMany(targetEntity="Tag", inversedBy="questions", cascade="persist")
 	 * @ORM\JoinTable(name="questions_tags")
 	 */
 	protected $tags;
@@ -260,5 +260,64 @@ class Question
     public function getModified()
     {
         return $this->modified;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Question
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     * @return Question
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+    
+        return $this;
+    }
+
+    /**
+     * Add tags
+     *
+     * @param \Neon\ExchangeBundle\Entity\Tag $tags
+     * @return Question
+     */
+    public function addTag(\Neon\ExchangeBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param \Neon\ExchangeBundle\Entity\Tag $tags
+     */
+    public function removeTag(\Neon\ExchangeBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
