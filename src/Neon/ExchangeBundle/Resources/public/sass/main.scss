@@ -31,7 +31,7 @@ html {
     background-color: $lightBlue;
     border: 1px solid darken($lightBlue, 15%);
     border-radius: 5px;
-    span {
+    span.votes, span.answers {
         float: left;
         font-size: 2em;
         display: block;
@@ -49,6 +49,12 @@ html {
         float: left;
         margin: 14px 0 0 10px;
         line-height: 20px;
+    }
+    .meta {
+        float: right;
+        .user, .tags {
+            margin: 0;
+        }
     }
 }
 
