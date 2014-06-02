@@ -13,6 +13,10 @@
             <p class="user"><a href="">{{ question.user.name }}</a> {{ question.created|time_ago_in_words }}</p>
             <div class='clearfix'><!-- blank --></div>
         </div>
+			
+		{% for tag in question.tags %}
+			<span class="label label-info">{{ tag.name }}</span>
+		{% endfor %}
     </div>
 
     <div id='answers'>

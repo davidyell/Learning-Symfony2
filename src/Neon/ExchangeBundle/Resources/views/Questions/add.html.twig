@@ -6,6 +6,13 @@
         {{ form_errors(form) }}
         {{ form_row(form.title) }}
         {{ form_row(form.question) }}
+	
+		<div>
+			<p>Tags</p>
+			<ul class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
+			</ul>
+			<a href='#' id='add-tag' title='Add tag'>Add a tag</a>
+		</div>
 
         <input type="submit" value="Save" class="btn btn-success">
     </form>
