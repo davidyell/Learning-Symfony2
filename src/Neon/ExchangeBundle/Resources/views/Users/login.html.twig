@@ -2,16 +2,18 @@
 
 {% block content %}
     <h2>Login</h2>
-    {{ form_start(form, {'action': path('login_check')}) }}
-		
-		{% if error|length > 0 %}
+    <form action="{{ path('login_check') }}" method="post">
+	
+		{% if error %}
 			{{ error.message }}
 		{% endif %}
 	
-        {{ form_errors(form) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.password, {'type': 'password'}) }}
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="_username" value="{{ last_username }}" />
 
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="_password" />
+		
         <input type="submit" value="Login" class="btn btn-success">
-    {{ form_end(form) }}
+    </form>
 {% endblock %}
