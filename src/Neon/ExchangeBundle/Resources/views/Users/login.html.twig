@@ -5,7 +5,7 @@
     <form action="{{ path('login_check') }}" method="post">
 	
 		{% if error %}
-			{{ error.message }}
+			<p>Unable to login. Please try again.</p>
 		{% endif %}
 	
 		<label for="username">Username:</label>
