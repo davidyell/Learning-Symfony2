@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "444771b143fceaec690858171df7ac1e",
+    "hash": "8c8b35f7c75638b76b9f423f9c221990",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -635,6 +636,61 @@
             "time": "2014-04-16 21:43:31"
         },
         {
+            "name": "gedmo/doctrine-extensions",
+            "version": "2.2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
+                "reference": "8dbab96dc9a81f0644aa8518b7a14c251ca64800"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/8dbab96dc9a81f0644aa8518b7a14c251ca64800",
+                "reference": "8dbab96dc9a81f0644aa8518b7a14c251ca64800",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": ">=2.1",
+                "php": ">=5.3.2"
+            },
+            "suggest": {
+                "doctrine/mongodb-odm": "*",
+                "doctrine/orm": ">=2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Gedmo": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gediminas Morkevicius",
+                    "email": "gediminas.morkevicius@gmail.com"
+                }
+            ],
+            "description": "Doctrine2 behavioral extensions",
+            "homepage": "http://gediminasm.org/",
+            "keywords": [
+                "behaviors",
+                "doctrine2",
+                "extensions",
+                "gedmo",
+                "loggable",
+                "nestedset",
+                "sluggable",
+                "sortable",
+                "timestampable",
+                "translatable",
+                "tree"
+            ],
+            "time": "2013-04-21 18:58:59"
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "dev-master",
             "target-dir": "Incenteev/ParameterHandler",
@@ -933,12 +989,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "93f8f3271fc20f2e09e79c80ffdc371114ad4f29"
+                "reference": "016423a804140a33814b8fad4240dbfa49a884da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/93f8f3271fc20f2e09e79c80ffdc371114ad4f29",
-                "reference": "93f8f3271fc20f2e09e79c80ffdc371114ad4f29",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/016423a804140a33814b8fad4240dbfa49a884da",
+                "reference": "016423a804140a33814b8fad4240dbfa49a884da",
                 "shasum": ""
             },
             "require": {
@@ -993,7 +1049,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-05-24 17:56:29"
+            "time": "2014-05-29 15:04:35"
         },
         {
             "name": "psr/log",
@@ -1236,12 +1292,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "59e424776e352f0adb325daecdb7f136757853fe"
+                "reference": "41a2d6227dbb47c1ec28d1a9508c61646bbb30ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/59e424776e352f0adb325daecdb7f136757853fe",
-                "reference": "59e424776e352f0adb325daecdb7f136757853fe",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/41a2d6227dbb47c1ec28d1a9508c61646bbb30ee",
+                "reference": "41a2d6227dbb47c1ec28d1a9508c61646bbb30ee",
                 "shasum": ""
             },
             "require": {
@@ -1282,7 +1338,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-05-25 14:34:15"
+            "time": "2014-06-01 03:21:42"
         },
         {
             "name": "symfony/assetic-bundle",
@@ -1521,12 +1577,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "53d5ecaa001e21016ced438301cce441eaa7e97d"
+                "reference": "1fc8a82f355b32b944097cd5e53562b0270601d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/53d5ecaa001e21016ced438301cce441eaa7e97d",
-                "reference": "53d5ecaa001e21016ced438301cce441eaa7e97d",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/1fc8a82f355b32b944097cd5e53562b0270601d3",
+                "reference": "1fc8a82f355b32b944097cd5e53562b0270601d3",
                 "shasum": ""
             },
             "require": {
@@ -1628,7 +1684,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-05-26 16:43:09"
+            "time": "2014-06-01 15:15:23"
         },
         {
             "name": "twig/extensions",
@@ -1741,7 +1797,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "symfony/symfony": 20
+        "symfony/symfony": 20,
+        "gedmo/doctrine-extensions": 20
     },
     "platform": {
         "php": ">=5.3.3"

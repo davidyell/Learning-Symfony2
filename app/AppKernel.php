@@ -17,7 +17,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Neon\ExchangeBundle\NeonExchangeBundle(),
 			new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-			new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle()
+			new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+			new Gedmo\Sluggable()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

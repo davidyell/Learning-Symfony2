@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "salavert/time-ago-in-words": "1.*",
 		"knplabs/knp-paginator-bundle": "~2.4",
-		"knplabs/knp-components": "1.2.5"
+		"knplabs/knp-components": "1.2.5",
+		"gedmo/doctrine-extensions": "2.2.*@dev"
     },
     "scripts": {
         "post-install-cmd": [

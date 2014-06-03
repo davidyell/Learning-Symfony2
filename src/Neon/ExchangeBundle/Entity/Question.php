@@ -2,6 +2,7 @@
 namespace Neon\ExchangeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -28,6 +29,12 @@ class Question
      * @ORM\Column(type="string")
      */
     protected $title;
+	
+	/**
+	 * @Gedmo\Slug(fields={"title"})
+	 * @ORM\Column(type="string")
+	 */
+	protected $slug;
 
     /**
      * @ORM\Column(type="text")
@@ -319,5 +326,28 @@ class Question
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Question
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
