@@ -20,6 +20,21 @@ class QuestionRepository extends EntityRepository {
 		$query = $db->orderBy('q.modified', 'DESC')->getQuery();
 		return $query;
 	}
+	
+	/**
+	 * Paginate a set of tagged questions ordered by modified
+	 *
+	 * @return Query
+	 */
+	public function paginateByTag($tag) {
+		$db = $this->createQueryBuilder('q');
+		$query = $db->leftJoin('q.tags', 't')
+			->where('t.id = :tag')
+			->setParameter('tag', $tag)
+			->orderBy('q.modified', 'DESC')
+			->getQuery();
+		return $query;
+	}
 
 	/**
 	 * Find question with answers ordered by upvotes

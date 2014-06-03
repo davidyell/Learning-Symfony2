@@ -6,3 +6,7 @@ neon_exchange:
   resource: "@NeonExchangeBundle/Controller/"
   type: annotation
   prefix: /
+  
+questions_by_tag:
+  path: /questions/{tag}
+  defaults: { _controller: NeonExchangeBundle:Questions:index }

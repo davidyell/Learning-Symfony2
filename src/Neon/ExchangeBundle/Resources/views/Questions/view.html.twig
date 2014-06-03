@@ -15,7 +15,7 @@
         </div>
 			
 		{% for tag in question.tags %}
-			<span class="label label-info">{{ tag.name }}</span>
+			<span class='label label-info'><a href="{{ path("questions_by_tag", {"tag": tag.id}) }}">{{ tag.name }}</a></span>
 		{% endfor %}
     </div>
 

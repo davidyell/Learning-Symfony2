@@ -14,7 +14,7 @@
 				<div class="meta">
 					<p class="tags">
 						{% for tag in question.tags %}
-							<span class='label label-info'>{{ tag.name }}</span>
+							<span class='label label-info'><a href="{{ path("questions_by_tag", {"tag": tag.id}) }}">{{ tag.name }}</a></span>
 						{% endfor %}
 					</p>
 					<p class="user"><a href="">{{ question.user.name }}</a> {{ question.created|time_ago_in_words }}</p>

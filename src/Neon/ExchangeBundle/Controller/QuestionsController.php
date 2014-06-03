@@ -29,8 +29,12 @@ class QuestionsController extends Controller {
      *
      * @return array
      */
-    public function indexAction() {
-		$query = $this->getDoctrine()->getRepository('NeonExchangeBundle:Question')->paginateByModified();
+    public function indexAction($tag = null) {
+		if (isset($tag)) {
+			$query = $this->getDoctrine()->getRepository('NeonExchangeBundle:Question')->paginateByTag($tag);
+		} else {
+			$query = $this->getDoctrine()->getRepository('NeonExchangeBundle:Question')->paginateByModified();
+		}
 		$paginator = $this->get('knp_paginator');
 		$pagination = $paginator->paginate(
 			$query,
